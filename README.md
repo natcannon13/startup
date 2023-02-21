@@ -3,3 +3,4 @@ My project will be a digital adaptation of the board game Long Live the King. In
 ![image](https://user-images.githubusercontent.com/123494773/215232400-bab1778a-ca8d-4f89-9f4f-7ccfd98f8199.png)
 
 From the Simon HTML assignment, I learned how to structure and interlink webpages with HTML and use input elements.
+From the Simon CSS assignment, I learned how to use Bootstrap and other CSS methods to improve the visuals of a webpage.
