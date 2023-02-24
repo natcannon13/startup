@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Expletus+Sans&display=swap');
+h1{
+  font-family: 'Expletus Sans';
+}
 .container{
     height : 100%;
     display: grid;
@@ -6,7 +10,7 @@
     grid-gap: 2em;
     max-width: 400px;
   }
-  .card{
+.card{
     height: 150px;
     width: 100px;
     border: red dotted thin;
@@ -15,6 +19,6 @@
     text-align: center;
     font-size: 16pt;
   }
-  .subtext{
+.subtext{
     font-size: 11pt;
   }
