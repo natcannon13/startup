@@ -28,7 +28,15 @@
         <br/>
         <main class = "container-fluid bg-dark text-center">
             <h1>Long Live the King</h1>
-            <div class="container">
+            <table>
+                <tr>
+                    <td>
+            <div class = "overflow-auto card-box">
+                <h2>Your cards:</h2>
+            </div>
+            </td>
+            <td>
+            <div class="container players">
                 <div class="card text-dark text-center"><p>Player 1</p><p class = "subtext">King</p></div>
                 <div class="card text-dark text-center"><p>Player 2</p><p class = "subtext">Assassin</p></div>
                 <div class="card text-dark text-center"><p>Player 3</p><p class = "subtext">Knight</p></div>
@@ -38,10 +46,14 @@
                 <div class="card text-dark text-center"><p>Player 7</p><p class = "subtext">Ambassador</p></div>
                 <div class="card text-dark text-center"><p>Player 8</p><p class = "subtext">Crime Lord</p></div>
             </div>
+            </td>
+                </tr>
+            </table>
             <br/>
-            <h2>
-                Actions:
-            </h2>
+            <div class = actions>
+                <h2>
+                    Actions:
+                </h2>
             <div class = "btn-group">
                 <button class="btn btn-primary">Buy Card<p class="small">2 Coins</p></button>
                 <button class="btn btn-danger">Sell Cards</button>
@@ -53,6 +65,7 @@
                 <button class="btn btn-danger">Sabotage</button>
                 <button class="btn btn-info">Sieze Power<p class="small">5 Coins or Pair</p></button>
                 <button class="btn btn-primary">Role Action</button>
+            </div>
             </div>
         </main>
     </body>

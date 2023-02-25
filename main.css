@@ -3,12 +3,15 @@ h1, h2{
   font-family: 'Expletus Sans';
 }
 .container{
+  margin:auto;
+    position: fixed;
     height : 100%;
+    grid-column: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 0.5em));
     grid-auto-rows: 150px;
-    grid-gap: 2em;
-    max-width: 400px;
+    grid-gap: 0.5em;
+    max-width: 75%;
   }
 .card{
     height: 150px;
@@ -24,4 +27,18 @@ h1, h2{
   }
 .small{
   font-size:8pt;
+}
+.card-box{
+  position: fixed;
+  border: thin dashed red;
+  right: 0;
+  max-width: 25%;
+  height: 300px;
+  flex-wrap: wrap;
+}
+.actions{
+  margin:auto;
+  position:fixed;
+  bottom:0px;
+  border:thin dashed red;
 }

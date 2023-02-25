@@ -4,3 +4,4 @@ My project will be a digital adaptation of the board game Long Live the King. In
 
 From the Simon HTML assignment, I learned how to structure and interlink webpages with HTML and use input elements.
 From the Simon CSS assignment, I learned how to use Bootstrap and other CSS methods to improve the visuals of a webpage.
+From the Startup HTML CSS assignment, I learned how to use Bootstrap and HTML to put together a webpage to be functional and visually appealing.
