@@ -28,6 +28,13 @@
         <br/>
         <main class = "container-fluid bg-dark ">
             <h1>Long Live the King</h1>
+            <p id = "current-player">Current Player: </p>
+
+            <div class = "btn-group" id = "menu-start">
+                <button class = "btn btn-danger" onclick="playercount('-')">-</button>
+                <button class = "btn btn-primary" id = "start-button" onclick = "setup()">Start 4</button>
+                <button class = "btn btn-success" onclick = "playercount('+')">+</button>
+            </div>
             <table>
                 <tr>
                     <td>
@@ -36,15 +43,15 @@
             </div>
             </td>
             <td>
-            <div class="container">
-                <div class="card text-dark text-center"><p>Player 1</p><p class = "subtext">King</p></div>
+            <div class="container" id = "role-cards">
+              <!--  <div class="card text-dark text-center"><p>Player 1</p><p class = "subtext">King</p></div>
                 <div class="card text-dark text-center"><p>Player 2</p><p class = "subtext">Assassin</p></div>
                 <div class="card text-dark text-center"><p>Player 3</p><p class = "subtext">Knight</p></div>
                 <div class="card text-dark text-center"><p>Player 4</p><p class = "subtext">Sage</p></div>
                 <div class="card text-dark text-center"><p>Player 5</p><p class = "subtext">Politician</p></div>
                 <div class="card text-dark text-center"><p>Player 6</p><p class = "subtext">Investigator</p></div>
                 <div class="card text-dark text-center"><p>Player 7</p><p class = "subtext">Ambassador</p></div>
-                <div class="card text-dark text-center"><p>Player 8</p><p class = "subtext">Crime Lord</p></div>
+                <div class="card text-dark text-center"><p>Player 8</p><p class = "subtext">Crime Lord</p></div> -->
             </div>
             </td>
                 </tr>
@@ -69,4 +76,5 @@
             </div>
         </main>
     </body>
+    <script src = "lltk.js"></script>
 </html>

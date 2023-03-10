@@ -36,11 +36,17 @@
             <p>
                 Log in to play
             </p>
-            <form method="get" action = "play.html">
                 <label for = "name">Name</label>
-                <input type="text" id = "Name" placeholder="your name here"/>
-                <button type="submit" class = "btn btn-danger">Log In</button>
-            </form>
+                <input type="text" id = "name" placeholder="your name here"/>
+                <button class = "btn btn-danger" onclick="login()">Log In</button>
         </main>
     </body>
+    <script>
+        function login() {
+            const nameEl = document.getElementById("name");
+            localStorage.setItem("userName", nameEl.value);
+            window.location.href = "play.html";
+            return false;
+        }
+    </script>
 </html>
