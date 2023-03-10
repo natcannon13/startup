@@ -5,6 +5,7 @@ h1, h2{
 .container{
   margin:auto;
     position: fixed;
+    left: 0px;
     height : 100%;
     grid-column: auto;
     display: grid;
