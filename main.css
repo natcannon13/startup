@@ -44,4 +44,11 @@ h1, h2{
   position:fixed;
   bottom:0px;
   border:thin dashed red;
+  z-index: 100;
+}
+.choice{
+  margin:auto;
+  position:fixed;
+  bottom:0px;
+  border:thin dashed red;
 }

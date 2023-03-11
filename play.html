@@ -26,7 +26,7 @@
         </header>
         <br/>
         <br/>
-        <main class = "container-fluid bg-dark ">
+        <main class = "container-fluid bg-dark " id = "main-body">
             <h1>Long Live the King</h1>
             <p id = "current-player">Current Player: </p>
 
@@ -57,24 +57,24 @@
                 </tr>
             </table>
             <br/>
-            <div class = "actions justify-content-center">
+            <div class = "actions justify-content-center" id = "action-bar">
                 <h2>
                     Actions:
                 </h2>
-            <div class = "btn-group" id = "action-bar">
-                <button class="btn btn-primary" action = "buy()">Buy Card<p class="small">2 Coins</p></button>
-                <button class="btn btn-danger" action = "sell()">Sell Cards</button>
-                <button class="btn btn-warning" action = "bribe()">Bribe<p class="small">3 Coins</p></button>
-                <button class="btn btn-info" action = "investigate()">Investigate<p class="small">2 Knowledge</p></button>
-                <button class="btn btn-danger" action = "extort()">Extort<p class="small">2 Might</p></button>
+            <div class = "btn-group">
+                <button class="btn btn-primary" onclick = "buy()">Buy Card<p class="small">2 Coins</p></button>
+                <button class="btn btn-danger" onclick = "sell()">Sell Cards</button>
+                <button class="btn btn-warning" onclick = "bribe()">Bribe<p class="small">3 Coins</p></button>
+                <button class="btn btn-info" onclick = "investigate()">Investigate<p class="small">2 Knowledge</p></button>
+                <button class="btn btn-danger" onclick = "extort()">Extort<p class="small">2 Might</p></button>
                 <button class="btn btn-success">Ally<p class="small">2 Influence</p></button>
                 <button class="btn btn-warning">Trade</button>
                 <button class="btn btn-danger">Sabotage</button>
-                <button class="btn btn-info" action = "seize_power()">Seize Power<p class="small">5 Coins or Pair</p></button>
+                <button class="btn btn-info" onclick = "seize_power()">Seize Power<p class="small">5 Coins or Pair</p></button>
                 <button class="btn btn-primary">Role Action</button>
             </div>
             </div>
         </main>
+        <script src = "lltk.js"></script>
     </body>
-    <script src = "lltk.js"></script>
 </html>

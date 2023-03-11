@@ -4,6 +4,8 @@ let currentPlayer = 0;
 let cturn = 0;
 let players = [];
 let Discard = [];
+let actions = 2;
+let actionBar = document.getElementById("action-bar");
 const deck = {
     m: 15,
     k: 15,
@@ -32,7 +34,7 @@ function playercount(operation){
 function setup(){
     elStart = document.getElementById("menu-start");
     elStart.classList.add("visually-hidden");
-
+    actionBar = document.getElementById("action-bar");
     pname = document.getElementById("current-player");
     pname.innerHTML = "Current Player: " + localStorage.getItem("userName");
     rolesInGame = ["King", "Assassin"];
@@ -68,6 +70,7 @@ function setup(){
         cardBox.appendChild(card);
     }
     updateCards();
+    turn();
 }
 function shuffle(list){
     let list2 = [];
@@ -82,7 +85,7 @@ function shuffle(list){
 function updateCards(){
     for(let i = 0; i < playerCount; i++){
         subtext = document.getElementById("subtext-" + (i + 1));
-        ph = players[currentPlayer].hand;
+        ph = players[i].hand;
         subtext.innerHTML = "Cards: " + (ph.k + ph.i + ph.p + ph.m) + " Coins: " + ph.c;
     }
 }
@@ -102,140 +105,182 @@ class Player{
         };
     }
 }
+function hide_actions(){
+    actionBar.classList.add("visually-hidden");
+}
 function turn(){
-    let actionBar = document.getElementById("action-bar");
-    actionBar.setAttribute()
-    let actions = 2;
+    actionBar.classList.remove("visually-hidden");
+    actions = 2;
     let drawn = false;
-    players[currentPlayer].hand.c += 3;
-    function buy(){
-        if(drawn){
-            return false;
-        }
-
+    players[currentPlayer].hand.c += 3;    
+    updateCards();
+}
+function pass_turn(){
+    if(win('end')){
+        return true;
     }
-    function buy(source){
-        if (source === "deck"){
-            draw_random(deck, players[currentPlayer].hand);
-        }
-        if (source === "discard"){
-            add_card(players[currentPlayer].hand ,discard.pop());
-        }
-        drawn = true;
+    currentPlayer++;
+    if (currentPlayer === playerCount){
+        currentPlayer = 0;
     }
-    function sell(){
-
-    }
-    function sell(cards){
-        for (const card in cards){
-            players[currentPlayer];
-        }
-    }
-    function bribe(){
-        if (players[currentPlayer].hand.c < 3){
-            return false;
-        }
-
-    }
-    function bribe(target, card){
-        players[currentPlayer].hand.c -= 3;
-        target.hand.c += 3;
-        if(target.hand.remove_card(card)){
-            players[currentPlayer.hand].add_card(card);
-        }
-
-    }
-    function investigate(){
-
-    }
-    function investigate(target, cards){
-
-    }
-    function extort(){
-
-    }
-    function extort(target, choice){
-        if (choice === 'card'){
-            draw_random(target.hand, players[currentPlayer].hand);
-        }
-        if (choice === 'coin'){
-            if (target.hand.c > 4){
-                target.hand.c -= 4;
-                players[currentPlayer].hand.c += 4;
-            }
-            else{
-                players[currentPlayer].hand.c += target.hand.c;
-                target.hand.c = 0;
-            }
-        }
-    }
-    /*function ally(){
-
-    }
-    function trade(){
-
-    }
-    function sabotage(){
-
+    cturn++;
+}
+function buy(){
+    /*if(drawn){
+        return false;
     }*/
-    function seize_power(){
+    actionBar.classList.add("visually-hidden");
+    let mainbody = document.getElementById("main-body");
+    let sourcemenu = document.createElement('div');
+    sourcemenu.classList.add("choice", "justify-content-center");
+    let header = document.createElement('h2');
+    header.textContent = "Draw From: ";
+    mainbody.appendChild(sourcemenu);
+    choicegroup = document.createElement('div');
+    choicegroup.classList.add("btn-group");
+    sourcemenu.appendChild(choicegroup);
+    button1 = document.createElement('button');
+    button1.innerHTML = "Deck";
+    button1.classList.add("btn", "btn-primary");
+    button1.setAttribute("onclick", "buy2('deck')");
+    button2 = document.createElement('button');
+    button2.innerHTML = "Discard";
+    button2.classList.add("btn", "btn-primary");
+    button2.setAttribute("onclick", "buy2('discard')");
+    choicegroup.appendChild(button1);
+    choicegroup.appendChild(button2);
+}
+function buy2(source){
+    if (players[currentPlayer].hand.c < 2){
+        return false;
+    }
+    players[currentPlayer].hand.c -= 2;
+    if (source === "deck"){
+        draw_random(deck, players[currentPlayer].hand);
+    }
+    if (source === "discard"){
+        add_card(players[currentPlayer].hand ,discard.pop());
+    }
+    updateCards();
+    drawn = true;
+    actions -= 1;
+    if (actions === 0){
+        pass_turn();
+    }
+    actionBar.classList.remove("visually-hidden");
+}
+function sell(){
 
+}
+function sell(cards){
+    for (const card in cards){
+        players[currentPlayer];
     }
-    function seize_power(cost){
+}
+function bribe(){
+    if (players[currentPlayer].hand.c < 3){
+        return false;
+    }
 
+}
+function bribe(target, card){
+    players[currentPlayer].hand.c -= 3;
+    target.hand.c += 3;
+    if(target.hand.remove_card(card)){
+        players[currentPlayer.hand].add_card(card);
     }
-    function seize_player(){
 
-    }
-    function seize_player(target){
+}
+function investigate(){
 
-    }
-    function assassinate(){
+}
+function investigate(target, cards){
 
-    }
-    function assassinate(target){
+}
+function extort(){
 
+}
+function extort(target, choice){
+    if (choice === 'card'){
+        draw_random(target.hand, players[currentPlayer].hand);
     }
-    function kill(target){
-
-        players.remove(currentPlayer);
-    }
-    function seize_power_with_power(){
-        for(i = 0; i < Discard.length; i++){
-            if (Discard[i] === "Knowledge"){
-                player[currentPlayer].hand.k++;
-                Discard.remove(i);
-                i--;
-            }
-        }
-    }
-    function duel(){
-        
-    }
-    function duel(target){
-        if (player[currentPlayer].hand.m < target.hand.m){
-            kill(players[currentPlayer]);
-        }
-        else if (!spare()){
-            kill(target);
-            players.currentPlayer.m -= 4;
-            discard("Might");
-            discard("Might");
-            discard("Might");
-            discard("Might");
+    if (choice === 'coin'){
+        if (target.hand.c > 4){
+            target.hand.c -= 4;
+            players[currentPlayer].hand.c += 4;
         }
         else{
-            players.currentPlayer.m -= 2;
-            discard("Might");
-            discard("Might");
+            players[currentPlayer].hand.c += target.hand.c;
+            target.hand.c = 0;
         }
     }
-    function spare(){
+}
+/*function ally(){
 
-    }
-    function accuse(){
+}
+function trade(){
 
+}
+function sabotage(){
+
+}*/
+function seize_power(){
+
+}
+function seize_power(cost){
+
+}
+function seize_player(){
+
+}
+function seize_player(target){
+
+}
+function assassinate(){
+
+}
+function assassinate(target){
+
+}
+function kill(target){
+
+    players.remove(currentPlayer);
+}
+function seize_power_with_power(){
+    for(i = 0; i < Discard.length; i++){
+        if (Discard[i] === "Knowledge"){
+            player[currentPlayer].hand.k++;
+            Discard.remove(i);
+            i--;
+        }
     }
+}
+function duel(){
+    
+}
+function duel(target){
+    if (player[currentPlayer].hand.m < target.hand.m){
+        kill(players[currentPlayer]);
+    }
+    else if (!spare()){
+        kill(target);
+        players.currentPlayer.m -= 4;
+        discard("Might");
+        discard("Might");
+        discard("Might");
+        discard("Might");
+    }
+    else{
+        players.currentPlayer.m -= 2;
+        discard("Might");
+        discard("Might");
+    }
+}
+function spare(){
+
+}
+function accuse(){
+
 }
 function win(time){
     return false;
