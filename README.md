@@ -7,3 +7,7 @@ From the Simon CSS assignment, I learned how to use Bootstrap and other CSS meth
 From the Startup HTML CSS assignment, I learned how to use Bootstrap and HTML to put together a webpage to be functional and visually appealing.
 From the Simon JavaScript assignment, I learned how to harness JavaScript to put together a functional web application.
 From the Startup JavaScript assignment, I learned how to use JavaScript to integrate interactivity in a webpage.
+Simon Service:
+    The service runs on the server and the web page calls functions from it.
+    Express helps differentiate function calls.
+    APIs can be called to get data from sites.

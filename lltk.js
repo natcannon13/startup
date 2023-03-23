@@ -5,6 +5,7 @@ let cturn = 0;
 let players = [];
 let Discard = [];
 let actions = 2;
+let drawn = false;
 let actionBar = document.getElementById("action-bar");
 const deck = {
     m: 15,
@@ -72,6 +73,7 @@ function setup(){
     updateCards();
     turn();
 }
+
 function shuffle(list){
     let list2 = [];
     size = list.length;
@@ -82,6 +84,7 @@ function shuffle(list){
     }
     return list2;
 }
+
 function updateCards(){
     for(let i = 0; i < playerCount; i++){
         subtext = document.getElementById("subtext-" + (i + 1));
@@ -89,6 +92,7 @@ function updateCards(){
         subtext.innerHTML = "Cards: " + (ph.k + ph.i + ph.p + ph.m) + " Coins: " + ph.c;
     }
 }
+
 function displayHand(){
 
 }
@@ -96,6 +100,7 @@ class Player{
     constructor(name, role){
         this.name = name;
         this.role = role;
+        this.ally = null;
         this.hand = {
             m : 0,
             k : 0,
@@ -105,16 +110,19 @@ class Player{
         };
     }
 }
+
 function hide_actions(){
     actionBar.classList.add("visually-hidden");
 }
+
 function turn(){
     actionBar.classList.remove("visually-hidden");
     actions = 2;
-    let drawn = false;
+    drawn = false;
     players[currentPlayer].hand.c += 3;    
     updateCards();
 }
+
 function pass_turn(){
     if(win('end')){
         return true;
@@ -125,13 +133,15 @@ function pass_turn(){
     }
     cturn++;
 }
+
 function buy(){
-    /*if(drawn){
+    if(drawn){
         return false;
-    }*/
+    }
     actionBar.classList.add("visually-hidden");
     let mainbody = document.getElementById("main-body");
     let sourcemenu = document.createElement('div');
+    sourcemenu.setAttribute('id', 'choicemenu');
     sourcemenu.classList.add("choice", "justify-content-center");
     let header = document.createElement('h2');
     header.textContent = "Draw From: ";
@@ -150,39 +160,46 @@ function buy(){
     choicegroup.appendChild(button1);
     choicegroup.appendChild(button2);
 }
+
 function buy2(source){
     if (players[currentPlayer].hand.c < 2){
-        return false;
     }
-    players[currentPlayer].hand.c -= 2;
-    if (source === "deck"){
-        draw_random(deck, players[currentPlayer].hand);
-    }
-    if (source === "discard"){
-        add_card(players[currentPlayer].hand ,discard.pop());
-    }
-    updateCards();
-    drawn = true;
-    actions -= 1;
-    if (actions === 0){
-        pass_turn();
+    else{
+        players[currentPlayer].hand.c -= 2;
+        if (source === "deck"){
+            draw_random(deck, players[currentPlayer].hand);
+     }
+        if (source === "discard"){
+            add_card(players[currentPlayer].hand ,discard.pop());
+        }
+        updateCards();
+        drawn = true;
+        actions -= 1;
+        if (actions === 0){
+            pass_turn();
+        }
     }
     actionBar.classList.remove("visually-hidden");
+    document.remove(document.getElementById('sourcemenu'));
 }
+
 function sell(){
 
 }
+
 function sell(cards){
     for (const card in cards){
         players[currentPlayer];
     }
 }
+
 function bribe(){
     if (players[currentPlayer].hand.c < 3){
         return false;
     }
 
 }
+
 function bribe(target, card){
     players[currentPlayer].hand.c -= 3;
     target.hand.c += 3;
@@ -191,15 +208,19 @@ function bribe(target, card){
     }
 
 }
+
 function investigate(){
 
 }
+
 function investigate(target, cards){
 
 }
+
 function extort(){
 
 }
+
 function extort(target, choice){
     if (choice === 'card'){
         draw_random(target.hand, players[currentPlayer].hand);
@@ -215,6 +236,7 @@ function extort(target, choice){
         }
     }
 }
+
 /*function ally(){
 
 }
@@ -227,25 +249,32 @@ function sabotage(){
 function seize_power(){
 
 }
+
 function seize_power(cost){
 
 }
+
 function seize_player(){
 
 }
+
 function seize_player(target){
 
 }
+
 function assassinate(){
 
 }
+
 function assassinate(target){
 
 }
+
 function kill(target){
 
     players.remove(currentPlayer);
 }
+
 function seize_power_with_power(){
     for(i = 0; i < Discard.length; i++){
         if (Discard[i] === "Knowledge"){
@@ -255,9 +284,11 @@ function seize_power_with_power(){
         }
     }
 }
+
 function duel(){
     
 }
+
 function duel(target){
     if (player[currentPlayer].hand.m < target.hand.m){
         kill(players[currentPlayer]);
@@ -276,18 +307,45 @@ function duel(target){
         discard("Might");
     }
 }
+
 function spare(){
 
 }
+
 function accuse(){
 
 }
+
 function win(time){
-    return false;
+    if (time === 'start'){
+        if(players[currentPlayer].role === 'King' && players[currentPlayer].hand.p >= 4){
+
+        }
+        if(players[currentPlayer].role === 'Sage' && players[currentPlayer].hand.k >= 5){
+            
+        }
+        if(players[currentPlayer].role === 'Politician' && (players[currentPlayer].hand.i + players[currentPlayer].hand.p) >= 5){
+            
+        }
+        if(players[currentPlayer].role === 'Ambassador' && players[currentPlayer].hand.i >= 4 && players[currentPlayer].ally != null){
+            
+        }
+        if(players[currentPlayer].role === 'Fool' && players[currentPlayer].hand.i === 1  && players[currentPlayer].hand.k === 1  && players[currentPlayer].hand.m === 1  && players[currentPlayer].hand.p === 1  && players[currentPlayer].hand.c === 1){
+            
+        }
+    }
+    if (time === 'middle'){
+
+    }
+    if (time === 'end'){
+
+    }
 }
+
 function choose_cards(){
 
 }
+
 function remove_card(target, card){
 
     if (card === 'Might'){
@@ -318,6 +376,8 @@ function remove_card(target, card){
         target.m--;
         return true;
     }
+}
+
 function add_card(target, card){
     if (card === 'Might'){
         if (target.m === 0){
@@ -348,10 +408,25 @@ function add_card(target, card){
         return true;
     }
 }
-}
+
 function discard(card){
     Discard.push(card);
 }
+
+function playerSelectorGenerator(){
+    let playermenu = document.createElement('div');
+    playermenu.setAttribute('id', 'playermenu');
+    for(let i = 0; i < playerCount; i++){
+        if(currentPlayer != i){
+            let playerbtn = playermenu.createElement('btn');
+            playerbtn.innerHTML = players[i].name;
+            playerbtn.classList.add("btn", "btn-primary");
+            playerbtn.setAttribute('onclick', "localStorage.setItem('selectedPlayer', i)");
+        }
+    }
+    return true;
+}
+
 function draw_random(source, destination){
     let j = Math.floor(Math.random() * (source.m + source.k + source.i + source.p));
     if (j < source.m){
