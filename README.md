@@ -11,3 +11,7 @@ Simon Service:
     The service runs on the server and the web page calls functions from it.
     Express helps differentiate function calls.
     APIs can be called to get data from sites.
+Simon DB:
+    MongoDB can be used to store data.
+    Credentials can be stored in environment variables to connect.
+    Code can use the node mongodb package.
