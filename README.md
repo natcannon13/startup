@@ -15,3 +15,7 @@ Simon DB:
     MongoDB can be used to store data.
     Credentials can be stored in environment variables to connect.
     Code can use the node mongodb package.
+Simon Login:
+    Authentication services take in a username and password
+    password is encrypted with bcrypt, username is hid with uuid
+    Usernames and passwords are stored in mongoDB.
