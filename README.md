@@ -19,3 +19,7 @@ Simon Login:
     Authentication services take in a username and password
     password is encrypted with bcrypt, username is hid with uuid
     Usernames and passwords are stored in mongoDB.
+Simon WebSocket:
+    WebSocket facilitates responses between a client and a server.
+    WebSocket can be pinged to keep a connection open.
+    Chat functionality is a great use for WebSocket.
