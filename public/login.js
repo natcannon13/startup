@@ -60,7 +60,6 @@ function logout() {
 }
 
 async function getUser(name) {
-  let scores = [];
   // See if we have a user with the given name.
   const response = await fetch(`/api/user/${name}`);
   if (response.status === 200) {
