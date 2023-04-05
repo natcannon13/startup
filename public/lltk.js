@@ -180,7 +180,9 @@ function buy2(source){
         }
     }
     actionBar.classList.remove("visually-hidden");
-    document.remove(document.getElementById('sourcemenu'));
+    document.remove(document.getElementById('choicemenu'));
+
+    
 }
 
 function sell(){
@@ -194,13 +196,20 @@ function sell(cards){
 }
 
 function bribe(){
+    console.log(players[currentPlayer]);
     if (players[currentPlayer].hand.c < 3){
         return false;
     }
+    actionBar.classList.add("visually-hidden");
+    playerSelectorGenerator();
 
 }
 
-function bribe(target, card){
+function bribe1(target){
+    document.remove(document.getElementById('playermenu'));
+}
+
+function bribe2(target, card){
     players[currentPlayer].hand.c -= 3;
     target.hand.c += 3;
     if(target.hand.remove_card(card)){
@@ -413,17 +422,27 @@ function discard(card){
     Discard.push(card);
 }
 
-function playerSelectorGenerator(){
+function playerSelectorGenerator(action){
+    let mainbody = document.getElementById("main-body");
     let playermenu = document.createElement('div');
-    playermenu.setAttribute('id', 'playermenu');
+    playermenu.setAttribute('id', 'choicemenu');
+    playermenu.classList.add("choice", "justify-content-center");
+    choicegroup = document.createElement('div');
+    choicegroup.classList.add("btn-group");
+    playermenu.appendChild(choicegroup);
     for(let i = 0; i < playerCount; i++){
         if(currentPlayer != i){
-            let playerbtn = playermenu.createElement('btn');
+            let playerbtn = document.createElement('btn');
             playerbtn.innerHTML = players[i].name;
             playerbtn.classList.add("btn", "btn-primary");
-            playerbtn.setAttribute('onclick', "localStorage.setItem('selectedPlayer', i)");
+            playerbtn.addEventListener("click", ()=>action(i));
+            choicegroup.appendChild(playerbtn);
         }
     }
+    let cancel = document.createElement('btn');
+    cancel.innerHTML = "Cancel";
+    cancel.classList.add("btn", "btn-danger");
+    mainbody.appendChild(playermenu);
     return true;
 }
 
