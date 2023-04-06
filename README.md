@@ -23,3 +23,5 @@ Simon WebSocket:
     WebSocket facilitates responses between a client and a server.
     WebSocket can be pinged to keep a connection open.
     Chat functionality is a great use for WebSocket.
+Startup Service:
+    Services can be used to to get data from a server and separate a client from a server.

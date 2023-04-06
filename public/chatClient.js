@@ -27,7 +27,7 @@ function sendMessage() {
   const msg = msgEl.value;
   if (!!msg) {
     appendMsg('me', 'me', msg);
-    const name = document.querySelector('#my-name').value;
+    const name = document.getElementById("current-player").innerHTML;
     socket.send(`{"name":"${name}", "msg":"${msg}"}`);
     msgEl.value = '';
   }
@@ -47,11 +47,4 @@ input.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     sendMessage();
   }
-});
-
-// Disable chat if no name provided
-const chatControls = document.querySelector('#chat-controls');
-const myName = document.querySelector('#my-name');
-myName.addEventListener('keyup', (e) => {
-  chatControls.disabled = myName.value === '';
 });

@@ -15,6 +15,9 @@ const deck = {
 };
 let playerCount = 4;
 
+let cplayerEl = document.getElementById("current-player");
+cplayerEl.innerHTML = localStorage.getItem('userName');
+
 function playercount(operation){
     elStart = document.getElementById("start-button");
     if (operation === '+'){

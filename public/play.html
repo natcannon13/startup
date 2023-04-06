@@ -28,13 +28,14 @@
         <br/>
         <main class = "container-fluid bg-dark " id = "main-body">
             <h1>Long Live the King</h1>
-            <p id = "current-player">Current Player: </p>
+            <p>Current Player: </p>
+            <p id = "current-player"></p>
 
-            <div class = "btn-group" id = "menu-start">
+           <!-- <div class = "btn-group" id = "menu-start">
                 <button class = "btn btn-danger" onclick="playercount('-')">-</button>
                 <button class = "btn btn-primary" id = "start-button" onclick = "setup()">Start 4</button>
                 <button class = "btn btn-success" onclick = "playercount('+')">+</button>
-            </div>
+            </div> -->
             <table>
                 <tr>
                     <td>
@@ -57,6 +58,16 @@
                 </tr>
             </table>
             <br/>
+
+          <div class = "chat">
+              <fieldset id="chat-controls">
+                <legend>Chat</legend>
+                <input id="new-msg" type="text" />
+                <button onclick="sendMessage()">Send</button>
+              </fieldset>
+              <div id="chat-text"></div>
+        </div>
+
             <div class = "actions justify-content-center" id = "action-bar">
                 <h2>
                     Actions:
@@ -76,5 +87,6 @@
             </div>
         </main>
         <script src = "lltk.js"></script>
+        <script src = "chatClient.js"></script>
     </body>
 </html>
