@@ -25,3 +25,7 @@ Simon WebSocket:
     Chat functionality is a great use for WebSocket.
 Startup Service:
     Services can be used to to get data from a server and separate a client from a server.
+Simon React:
+    React can be used to dynamically update page elements.
+    React can mimic the appearance of multiple pages on one page.
+    React is an easier way to manipulate the DOM.
